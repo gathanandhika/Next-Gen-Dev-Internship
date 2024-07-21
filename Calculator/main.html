@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTERN-Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      background-color: #212529;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .btn {
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      margin: 5px;
+      border-radius: 50%;
+      border: none;
+      color: #fff;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #545b62;
+    }
+
+    #display {
+      font-size: 2em;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #343a40;
+      color: #fff;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: right;
+    }
+
+    .row {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" class="form-control mb-2" id="display" readonly>
+    <div class="row">
+      <button class="btn btn-primary col-3" onclick="addToDisplay('7')">7</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('8')">8</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('9')">9</button>
+      <button class="btn btn-danger col-3" onclick="addToDisplay('/')">/</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary col-3" onclick="addToDisplay('4')">4</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('5')">5</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('6')">6</button>
+      <button class="btn btn-danger col-3" onclick="addToDisplay('*')">*</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary col-3" onclick="addToDisplay('1')">1</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('2')">2</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('3')">3</button>
+      <button class="btn btn-danger col-3" onclick="addToDisplay('-')">-</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary col-3" onclick="addToDisplay('0')">0</button>
+      <button class="btn btn-primary col-3" onclick="addToDisplay('.')">.</button>
+      <button class="btn btn-success col-3" onclick="calculate()">=</button>
+      <button class="btn btn-danger col-3" onclick="addToDisplay('+')">+</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-secondary col-6" onclick="clearDisplay()">C</button>
+      <button class="btn btn-secondary col-6" onclick="backspace()">←</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery (for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Calculator Script -->
+  <script>
+    function addToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+      let display = document.getElementById('display');
+      try {
+        display.value = eval(display.value);
+      } catch(e) {
+        display.value = 'Error';
+      }
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function backspace() {
+      let display = document.getElementById('display');
+      display.value = display.value.slice(0, -1);
+    }
+  </script>
+</body>
+</html>
